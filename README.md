@@ -27,6 +27,7 @@
 - [掘金](https://juejin.cn)
 - [开源中国](https://oschina.net)
 - [CSDN](https://csdn.net)
+- [思否](https://segmentfault.com)
 
 ### Git 代码仓文件管理
 
@@ -35,7 +36,7 @@
 
 ## 文档
 
-[Docs](https://k8scat.github.io/Articli) | [国内地址](https://k8scat.gitee.io/articli)
+[Docs](https://articli-dev.github.io/Articli/) | [国内地址](https://k8scat.gitee.io/articli)
 
 ## LICENSE
 

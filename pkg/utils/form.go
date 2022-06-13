@@ -1,12 +1,14 @@
-package csdn
+package utils
 
 import (
 	"bytes"
-	"github.com/juju/errors"
 	"io"
 	"mime/multipart"
 	"os"
 	"strings"
+
+	"github.com/juju/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 // https://stackoverflow.com/questions/20205796/post-data-using-the-content-type-multipart-form-data
@@ -76,7 +78,7 @@ func (f *Form) Encode() (buf *bytes.Buffer, contentType string, err error) {
 func MustOpen(f string) *os.File {
 	r, err := os.Open(f)
 	if err != nil {
-		panic(errors.Trace(err))
+		log.Fatal(err)
 	}
 	return r
 }

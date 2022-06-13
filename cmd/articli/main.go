@@ -2,20 +2,21 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"path/filepath"
 	"runtime/debug"
 
-	"github.com/k8scat/articli/pkg/cmd/csdn"
-	"github.com/k8scat/articli/pkg/cmd/github"
-	"github.com/k8scat/articli/pkg/cmd/gitlab"
-	"github.com/k8scat/articli/pkg/cmd/oschina"
-
 	"github.com/juju/errors"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
 	"github.com/k8scat/articli/internal/config"
+	"github.com/k8scat/articli/pkg/cmd/csdn"
+	"github.com/k8scat/articli/pkg/cmd/github"
+	"github.com/k8scat/articli/pkg/cmd/gitlab"
 	"github.com/k8scat/articli/pkg/cmd/juejin"
+	"github.com/k8scat/articli/pkg/cmd/oschina"
+	"github.com/k8scat/articli/pkg/cmd/segmentfault"
+	"github.com/k8scat/articli/pkg/utils"
 )
 
 var (
@@ -43,6 +44,8 @@ var (
 )
 
 func init() {
+	utils.InitLogger()
+
 	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "An alternative config file")
 }
 
@@ -73,6 +76,7 @@ func main() {
 	rootCmd.AddCommand(oschina.NewOSChinaCmd(cfgFile, cfg))
 	rootCmd.AddCommand(csdn.NewCSDNCmd(cfgFile, cfg))
 	rootCmd.AddCommand(gitlab.NewGitlabCmd(cfgFile, cfg))
+	rootCmd.AddCommand(segmentfault.NewCmd(cfgFile, cfg))
 
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatalf("execute command failed: %+v", errors.Trace(err))

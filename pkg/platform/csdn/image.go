@@ -2,13 +2,16 @@ package csdn
 
 import (
 	"encoding/json"
-	browser "github.com/EDDYCJY/fake-useragent"
-	"github.com/juju/errors"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"path/filepath"
 	"strings"
+
+	browser "github.com/EDDYCJY/fake-useragent"
+	"github.com/juju/errors"
+
+	"github.com/k8scat/articli/pkg/utils"
 )
 
 type UploadData struct {
@@ -86,7 +89,7 @@ func (c *Client) UploadImage(path string) (string, error) {
 		return "", errors.Trace(err)
 	}
 
-	form := NewForm()
+	form := utils.NewForm()
 	form.SetString("key", uploadData.FilePath)
 	form.SetString("policy", uploadData.Policy)
 	form.SetString("OSSAccessKeyId", uploadData.AccessID)

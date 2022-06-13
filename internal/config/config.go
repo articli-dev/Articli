@@ -17,11 +17,12 @@ type Config struct {
 }
 
 type Platforms struct {
-	Juejin  Juejin  `yaml:"juejin,omitempty"`
-	OSChina OSChina `yaml:"oschina,omitempty"`
-	Github  Github  `yaml:"github,omitempty"`
-	CSDN    CSDN    `yaml:"csdn,omitempty"`
-	Gitlab  Gitlab  `yaml:"gitlab,omitempty"`
+	Juejin       Juejin       `yaml:"juejin,omitempty"`
+	OSChina      OSChina      `yaml:"oschina,omitempty"`
+	Github       Github       `yaml:"github,omitempty"`
+	CSDN         CSDN         `yaml:"csdn,omitempty"`
+	Gitlab       Gitlab       `yaml:"gitlab,omitempty"`
+	SegmentFault SegmentFault `yaml:"segmentfault,omitempty"`
 }
 
 type Juejin struct {
@@ -45,6 +46,10 @@ type CSDN struct {
 	Cookie    string `yaml:"cookie,omitempty"`
 	APIKey    string `yaml:"api_key,omitempty"`
 	APISecret string `yaml:"api_secret,omitempty"`
+}
+
+type SegmentFault struct {
+	Token string `yaml:"token,omitempty"`
 }
 
 func ParseConfig(cfgFile string) (*Config, error) {
